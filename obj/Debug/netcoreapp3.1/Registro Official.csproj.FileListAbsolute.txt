@@ -1,0 +1,13 @@
+C:\Users\Ariana Lopez Ward\Prog 2\Registro Official\bin\Debug\netcoreapp3.1\Registro Official.exe
+C:\Users\Ariana Lopez Ward\Prog 2\Registro Official\bin\Debug\netcoreapp3.1\Registro Official.deps.json
+C:\Users\Ariana Lopez Ward\Prog 2\Registro Official\bin\Debug\netcoreapp3.1\Registro Official.runtimeconfig.json
+C:\Users\Ariana Lopez Ward\Prog 2\Registro Official\bin\Debug\netcoreapp3.1\Registro Official.runtimeconfig.dev.json
+C:\Users\Ariana Lopez Ward\Prog 2\Registro Official\bin\Debug\netcoreapp3.1\Registro Official.dll
+C:\Users\Ariana Lopez Ward\Prog 2\Registro Official\bin\Debug\netcoreapp3.1\Registro Official.pdb
+C:\Users\Ariana Lopez Ward\Prog 2\Registro Official\obj\Debug\netcoreapp3.1\Registro Official.csprojAssemblyReference.cache
+C:\Users\Ariana Lopez Ward\Prog 2\Registro Official\obj\Debug\netcoreapp3.1\Registro Official.AssemblyInfoInputs.cache
+C:\Users\Ariana Lopez Ward\Prog 2\Registro Official\obj\Debug\netcoreapp3.1\Registro Official.AssemblyInfo.cs
+C:\Users\Ariana Lopez Ward\Prog 2\Registro Official\obj\Debug\netcoreapp3.1\Registro Official.csproj.CoreCompileInputs.cache
+C:\Users\Ariana Lopez Ward\Prog 2\Registro Official\obj\Debug\netcoreapp3.1\Registro Official.dll
+C:\Users\Ariana Lopez Ward\Prog 2\Registro Official\obj\Debug\netcoreapp3.1\Registro Official.pdb
+C:\Users\Ariana Lopez Ward\Prog 2\Registro Official\obj\Debug\netcoreapp3.1\Registro Official.genruntimeconfig.cache
