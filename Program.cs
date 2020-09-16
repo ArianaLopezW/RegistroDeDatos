@@ -38,7 +38,7 @@ namespace Registro_Official
                         age = Console.ReadLine();
 
                         Console.WriteLine("Desea: guardar (G), continuar (C), o salir (S)");
-                        resp = Console.ReadLine();
+                        resp = Console.ReadLine().ToUpper();
 
                         switch(resp)
                         {
