@@ -18,6 +18,7 @@ namespace Registro_Official
                 string header = "Cedula,Nombre,Apellido,Edad";
                 File.WriteAllText(args[0], header + Environment.NewLine);
             }
+            
             do
             {
             Console.Clear();
@@ -37,9 +38,10 @@ namespace Registro_Official
                 case '1':
                 do
                 {
-                    System.Console.WriteLine("Ingrese sus nombres: ");
+
+                    System.Console.WriteLine("Ingrese sus nombre: ");
                     nombre = Console.ReadLine();
-                    System.Console.WriteLine("Ingrese sus apellidos: ");
+                    System.Console.WriteLine("Ingrese sus apellido: ");
                     apellido = Console.ReadLine();
                     System.Console.WriteLine("Ingrese su cedula: ");
                     cedula = Console.ReadLine();
@@ -51,39 +53,33 @@ namespace Registro_Official
                      switch(Decision)  
                      {  
                         case "G":
-                        try
-                        {
-                            using(StreamWriter file = new StreamWriter(args[0],true))
-                            {
-                                file.WriteLine(cedula + "," + nombre + "," + apellido + "," + edad);
-                            }
-                            
-                        }
-                        catch (System.Exception e)
-                        {
-                           System.Console.WriteLine(e);
-                        }
-                            continue;
-                        case "C":
-                            continue;
-                        case "S":
-                            break;
+                                try{
+                                    using(StreamWriter file = new StreamWriter(args[0], true))
+                                    {
+                                        file.WriteLine(cedula + "," + nombre + "," + apellido + "," + edad);
+                                    }
+                                } catch(Exception e) {
+                                    Console.Write(e);
+                                }
+                                continue;
+                            case "C":
+                                continue;
+                            case "S":
+                                break;
                             
                      }
                 } while (Decision != "S");
-                break;
+                continue;
                     
                 case '2':
-                using(StreamReader Archivo1 = new StreamReader (args[0],true))
+                using(StreamReader Archivo1 = new StreamReader (args[0]))
                 {
                     Console.WriteLine(Archivo1.ReadToEnd());
                     Console.ReadKey();
                 }
-                
                 continue;
 
                 case '3':
-                
                 string cadena, cedula1;
                 bool encontrado = false;
                 string[] campos = new string[4];
@@ -91,11 +87,11 @@ namespace Registro_Official
 
                 try
                 {
-                    using(StreamReader Archivo2 = new StreamReader (args[0],true))
+                    using(StreamReader Archivo2 = new StreamReader (args[0]))
                     {
-                    System.Console.Write("Introduzca la cedula: ");
-                    cedula1 = Console.ReadLine();
-                    cadena = Archivo2.ReadLine();
+                        System.Console.Write("Introduzca la cedula: ");
+                        cedula1 = Console.ReadLine();
+                        cadena = Archivo2.ReadLine();
                     while (cadena != null && encontrado == false)
                     {
                         campos = cadena.Split(separador);
@@ -120,8 +116,7 @@ namespace Registro_Official
                             System.Console.WriteLine("La cedula {0} no se encontró en el archivo", cedula1);
                         }
                     }
-                    
-                    
+
                 }
                 catch (System.Exception e)
                 {
@@ -137,87 +132,82 @@ namespace Registro_Official
                 string[] nuevosDatos = new string[4];
                 char[] separador1 = {','};
 
-                try
+                try 
                 {
-                    using(StreamReader Archivo3 = new StreamReader(args[0],true))
+                    using (StreamReader Archivo3 = new StreamReader(args[0], true))
                     {
-                    using(StreamWriter file1 = File.CreateText("temp.csv"))
-                    {
-                        System.Console.Write("Introduzca la cedula: ");
-                    cedula2 = Console.ReadLine();
-                    cadena1 = Archivo3.ReadLine();
-                    while (cadena1 != null)
-                    {
-                        campos1 = cadena1.Split(separador1);
-                        if (campos1[0].Trim().Equals(cedula2))
+                        using (StreamWriter file1 = File.CreateText("temp.csv"))
                         {
-                            System.Console.WriteLine();
-                            System.Console.WriteLine("Registro encontrado con estos datos:");
-                            System.Console.WriteLine();
-                            System.Console.WriteLine("-------------------------------------");
-                            System.Console.WriteLine("       Cedula: {0}",campos1[0]);
-                            System.Console.WriteLine("       Nombres: {0}",campos1[1]);
-                            System.Console.WriteLine("       Apellidos: {0}",campos1[2]);
-                            System.Console.WriteLine("       Edad: {0}",campos1[3]);
-                            System.Console.WriteLine("-------------------------------------");
-                            encontrado1 = true;
-                            System.Console.WriteLine("Ingresa la nueva cedula: ");
-                            nuevosDatos[0] = Console.ReadLine();
-                            System.Console.WriteLine("Ingresa el nuevo nombre: ");
-                            nuevosDatos[1] = Console.ReadLine();
-                            System.Console.WriteLine("Ingresa el nuevo apellido: ");
-                            nuevosDatos[2] = Console.ReadLine();
-                            System.Console.WriteLine("Ingresa la nueva edad: ");
-                            nuevosDatos[3] = Console.ReadLine();
-           
-                            file1.WriteLine(nuevosDatos[0] + "," + nuevosDatos[1] + "," + nuevosDatos[2] + "," + nuevosDatos[3]);
+                            Console.Write("Introduzca la cedula:");
+                            cedula2 = Console.ReadLine();
+                            cadena1 = Archivo3.ReadLine();
+                            while (cadena1 != null)
+                            {
+                                campos1 = cadena1.Split(separador1);
+                                if (campos1[0].Trim().Equals(cedula2))
+                                {
+                                    Console.WriteLine();
+                                    Console.WriteLine("Registro encontrado con estos datos: ");
+                                    Console.WriteLine();
+                                    Console.WriteLine("--------------------------------");
+                                    Console.WriteLine("Cedula: {0}", campos1[0]);
+                                    Console.WriteLine("Nombre: {0}", campos1[1]);
+                                    Console.WriteLine("Apellido: {0}", campos1[2]);
+                                    Console.WriteLine("Edad: {0}", campos1[3]);
+                                    Console.WriteLine("--------------------------------");
+                                    encontrado1 = true;
+                                    Console.WriteLine("Ingresa la nueva cedula: ");
+                                    nuevosDatos[0] = Console.ReadLine();
+                                    Console.WriteLine("Ingresa la nueva nombre: ");
+                                    nuevosDatos[1] = Console.ReadLine();
+                                    Console.WriteLine("Ingresa la nueva apellido: ");
+                                    nuevosDatos[2] = Console.ReadLine();
+                                    Console.WriteLine("Ingresa la nueva edad: ");
+                                    nuevosDatos[3] = Console.ReadLine();
 
-                            Console.Clear();
-                            System.Console.WriteLine("Su registro ha sido modificado");
-                            Console.ReadKey();
+                                    file1.WriteLine(nuevosDatos[0] + "," + nuevosDatos[1]+ "," + nuevosDatos[2] + "," + nuevosDatos[3]);
+
+                                    Console.Clear();
+                                    Console.WriteLine("Su registro ha sido modificado");
+                                    Console.ReadKey();
+                                }
+                                else
+                                {
+                                    file1.WriteLine(cadena1);
+                                }
+                                cadena1 = Archivo3.ReadLine();    
+                            }
+                                if (encontrado1 == false)
+                                {
+                                    Console.WriteLine("La cedula {0} no se encontró en el archivo", cedula2);
+                                    Console.ReadKey();
+                                }
                         }
-                        else
-                        {
-                            file1.WriteLine(cadena1);
-                        }
-                        cadena1 = Archivo3.ReadLine();
                     }
-                        if(encontrado1 == false)
-                        {
-                            System.Console.WriteLine("La cedula {0} no se encontró en el archivo", cedula2);
-                            Console.ReadKey();
-                        }
-                    }
-                    
-                    
-                    }      
                 }
-                catch (System.Exception e)
+                catch (Exception e)
                 {
-                    System.Console.WriteLine(e);
+                    Console.WriteLine(e);
                 }
                 File.Delete(args[0]);
                 File.Move("temp.csv",args[0]);
                 continue;
 
                 case '5':
-                
-                
                 string cadena2, cedula3;
                 bool encontrado2 = false;
                 string[] campos2 = new string[4];
                 char[] separador2 = {','};
-
-                try
+                try 
                 {
-                    using(StreamReader Archivo4 = new StreamReader (args[0],true))
+                    using (StreamReader Archivo4 = new StreamReader(args[0], true))
                     {
-                        using(StreamWriter File2 = File.CreateText("temp.csv"))
+                        using (StreamWriter File2 = File.CreateText("temp.csv"))
                         {
-                            System.Console.Write("Introduzca la cedula: ");
+                            Console.Write("Introduzca la cedula: ");
                             cedula3 = Console.ReadLine();
                             cadena2 = Archivo4.ReadLine();
-                            while (cadena2 != null)
+                            while(cadena2 != null)
                             {
                                 campos2 = cadena2.Split(separador2);
                                 if (campos2[0].Trim().Equals(cedula3))
@@ -229,25 +219,21 @@ namespace Registro_Official
                                     File2.WriteLine(cadena2);
                                 }
                                 cadena2 = Archivo4.ReadLine();
-
                             }
+                            if(encontrado2 == false)
+                            {
+                                Console.WriteLine("La cedula {0} no se encontró en el archivo", cedula3);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Registro Eliminado");
+                            }
+                        }
+                    }
 
-                        if(encontrado2 == false)
-                        {
-                            System.Console.WriteLine("La cedula {0} no se encontró en el archivo", cedula3);
-                        }
-                        else
-                        {
-                            System.Console.WriteLine("Registro eliminado");
-                        }
-                    }  
-                    
                 }
-                    
-                }
-                catch (System.Exception e)
-                {
-                    System.Console.WriteLine(e);
+                catch (Exception e) {
+                    Console.WriteLine(e);
                 }
                 File.Delete(args[0]);
                 File.Move("temp.csv",args[0]);
@@ -257,6 +243,7 @@ namespace Registro_Official
                 case '6':
                 rep = false;
                 break;
+
                 
                 default: 
                 System.Console.WriteLine("Usted no ha ingresado el numero correcto");
@@ -272,6 +259,7 @@ namespace Registro_Official
             }
         }
         while (rep == true);
+            
             
         }
     }
