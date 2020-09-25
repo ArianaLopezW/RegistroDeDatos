@@ -6,10 +6,192 @@ namespace Registro_Official
 {
     class Program
     {
-        static void Main(string[] args)
+        static string RegistrarNombre()
         {
-            string nombre, apellido, cedula;
+            char[] character = new char [30];
+            char x;
+            for (int i = 0; i < character.Length;)
+            {
+                x = Console.ReadKey(true).KeyChar;
+                if(x >= 65 && x<= 122)
+                {
+                    character[i] = x;
+                    i++;
+                    Console.Write(x);
+                }
+                if (x == 13)
+                {
+                    for (int e = i; e < character.Length; e++)
+                    {
+                        character[e] = ' ';
+
+                    }
+                    break;
+                }
+                if(x == 8 && i >= 1)
+                {
+                    Console.Write("\b \b");
+                    i--;
+                }
+            }
+            return new string (character);
+        }
+
+        static string RegistrarApellido()
+        {
+            char[] character = new char [30];
+            char x;
+            for (int i = 0; i < character.Length;)
+            {
+                x = Console.ReadKey(true).KeyChar;
+                if (x >= 65 && x <= 122)
+                {
+                    character[i] = x;
+                    i++;
+                    Console.Write(x);
+                }
+                if (x == 13)
+                {
+                    for(int e = i; e < character.Length; e++)
+                    {
+                        character[e] = ' ';
+                    }
+                    break;
+                }
+                if (x == 8 && i >=1)
+                {
+                    Console.Write("\b \b");
+                    i--;
+                }
+            }
+            return new string(character);
+        }
+        
+        static string RegistrarEdad()
+        {
+            char[] character = new char[5];
+            char x;
+
+            for (int i = 0; i < character.Length;)
+            {
+                x = Console.ReadKey(true).KeyChar;
+                if(x >= 48 && x <= 57)
+                {
+                    character[i] = x;
+                    i++;
+                    Console.Write(x);
+                }
+                if (x == 13)
+                {
+                    for (int e = i; e < character.Length; e++)
+                    {
+                        character[e] = ' ';
+                    }
+                    break;
+                }
+                if (x == 8 && i >= 1)
+                {
+                    Console.Write("\b \b");
+                    i--;
+                }
+            }
+            return new string(character);       
+        }
+
+        static string RegistrarCedula()
+        {
+            char[] character = new char[30];
+            char x;
+            for(int i = 0; i < character.Length;)
+            {
+                x = Console.ReadKey(true).KeyChar;
+                if((x >= 48 && x <= 57) || (x == 45))
+                {
+                    character[i] = x;
+                    i++;
+                    Console.Write(x);
+                }
+                if (x == 13)
+                {
+                    for (int e = i; e < character.Length; e++)
+                    {
+                        character[e] = ' ';
+                    }
+                    break;
+                }
+                if (x == 8 && i >= 1)
+                {
+                    Console.Write("\b \b");
+                    i--;
+                }
+            }
+            return new string(character);      
+        }
+        static string RegistrarMonto()
+        {
+            char[] character = new char[30];
+            char x;
+            for(int i = 0; i < character.Length;)
+            {
+                x = Console.ReadKey(true).KeyChar;
+                if((x >= 48 && x <= 57) || (x == 46))
+                {
+                    character[i] = x;
+                    i++;
+                    Console.Write(x);
+                }
+                if (x == 13)
+                {
+                    for (int e = i; e < character.Length; e++)
+                    {
+                        character[e] = ' ';
+                    }
+                    break;
+                }
+                if (x == 8 && i >= 1)
+                {
+                    Console.Write("\b \b");
+                    i--;
+                }
+            }
+            return new string(character);      
+        }
+
+        static string RegistrarPassword()
+        {
+            char[] character = new char[30];
+            char x;
+            for (int i = 0; i < character.Length;)
+            {
+                x = Console.ReadKey(true).KeyChar;
+                if (x >= 48 && x <= 128) 
+                {
+                    character[i] = x;
+                    i++;
+                    Console.Write("*");
+                }
+                if (x == 13)
+                {
+                    for (int e = i; e < character.Length; e++)
+                    {
+                        character[e] = ' ';
+                    }
+                    break;
+                }
+                if (x == 8 && i >= 1)
+                {
+                    Console.Write("\b \b");
+                    i--;
+                }
+            }
+            return new string(character);
+        }
+
+        static void Main(string[] args)
+        { 
+            string nombre, apellido, cedula, password;
             int edad;
+            decimal monto;
             string Decision;
             char caso, caso1;
             bool rep = true;
@@ -40,24 +222,42 @@ namespace Registro_Official
                 {
 
                     System.Console.WriteLine("Ingrese sus nombre: ");
-                    nombre = Console.ReadLine();
-                    System.Console.WriteLine("Ingrese sus apellido: ");
-                    apellido = Console.ReadLine();
-                    System.Console.WriteLine("Ingrese su cedula: ");
-                    cedula = Console.ReadLine();
-                    System.Console.WriteLine("Ingrese su edad: ");
-                    edad = int.Parse(Console.ReadLine());
-                    Console.WriteLine("Datos ingresados: {0},{1},{2},{3}",cedula,nombre,apellido,edad);
+                    nombre = RegistrarNombre().Trim();
+                    System.Console.WriteLine("\nIngrese sus apellido: ");
+                    apellido = RegistrarApellido().Trim();
+                    System.Console.WriteLine("\nIngrese su cedula: ");
+                    cedula = RegistrarCedula().Trim();
+                    System.Console.WriteLine("\nIngrese su edad: ");
+                    edad = int.Parse(RegistrarEdad().Trim());
+                    System.Console.WriteLine("\nIngrese su monto: ");
+                    monto = decimal.Parse(RegistrarMonto().Trim());
+                    System.Console.WriteLine("\nIngrese su contraseña: ");
+                    password = RegistrarPassword().Trim();
+                    Console.WriteLine("\nDatos ingresados: {0},{1},{2},{3},{4}",cedula,nombre,apellido,edad,monto);
                     Console.WriteLine("Desea Guardar(G), Continuar(C), Salir(S)");
                     Decision = Console.ReadLine().ToUpper();
                      switch(Decision)  
                      {  
                         case "G":
                                 try{
-                                    using(StreamWriter file = new StreamWriter(args[0], true))
+                                    Console.Write("Ingrese la contraseña antes digitada para guardar: ");
+                                    string password2 = RegistrarPassword().Trim();
+                                    Console.WriteLine();
+                                    if (password2 == password)
                                     {
-                                        file.WriteLine(cedula + "," + nombre + "," + apellido + "," + edad);
+                                      using(StreamWriter file = new StreamWriter(args[0], true))
+                                    {
+                                        file.WriteLine(cedula + "," + nombre + "," + apellido + "," + edad + "," + monto + "," + password);
                                     }
+                                    Console.WriteLine("Datos Guardados, presione cualquier tecla para continuar"); 
+                                    Console.ReadKey();
+                                    Console.Clear();                               
+                                    } 
+                                    else
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine("Contraseña incorrecta - Datos no guardados");
+                                    }     
                                 } catch(Exception e) {
                                     Console.Write(e);
                                 }
